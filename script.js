@@ -32,7 +32,6 @@ function computerPlay(array) {
 }
 
 const choices = ['Rock', 'Paper', 'Scissors'];
-/*const results = document.querySelector('.results');*/
 
 function capitalize(str){
     const lower = str.toLowerCase(str);
@@ -96,4 +95,3 @@ function game(){
 
 console.log(playerSelection)
 console.log(game())
-/*results.textContent = `${game()}`*/
