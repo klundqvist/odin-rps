@@ -32,6 +32,7 @@ function computerPlay(array) {
 }
 
 const choices = ['Rock', 'Paper', 'Scissors'];
+/*const results = document.querySelector('.results');*/
 
 function capitalize(str){
     const lower = str.toLowerCase(str);
@@ -48,9 +49,6 @@ function oneRound(computerSelection, playerSelection) {
     const rock = 'Rock'
     const paper = 'Paper'
     const scissors = 'Scissors'
-
-    
-
 
         if (computerSelection === playerSelection) {
             drawScore++;
@@ -83,8 +81,6 @@ function game(){
             console.log(playerScore, computerScore, drawScore);
         }
 
-        
-
         if (playerScore === computerScore) {
             return `It's a draw. Computer got ${computerScore} points, you got ${playerScore} points and you played ${drawScore} equal games.`
         }
@@ -100,3 +96,4 @@ function game(){
 
 console.log(playerSelection)
 console.log(game())
+/*results.textContent = `${game()}`*/
