@@ -6,7 +6,6 @@ function computerPlay(array) {
 }
 
 const choices = ['Rock', 'Paper', 'Scissors'];
-const result = computerPlay(choices);
 
 function capitalize(str){
     const lower = str.toLowerCase(str);
@@ -20,7 +19,7 @@ function oneRound(computerSelection, playerSelection) {
 
 
         if (computerSelection === playerSelection) {
-            console.log('Draw');
+            console.log(`Draw. You played ${computerSelection} and computer played ${playerSelection}`);
         }
         else if (computerSelection === paper && playerSelection === rock){ 
             console.log(`You Lose! Computer played ${computerSelection} and you played ${playerSelection}`);
@@ -36,10 +35,7 @@ function oneRound(computerSelection, playerSelection) {
     }
 }
 
-const computerSelection = result;
+const computerSelection = computerPlay(choices);
 const playerSelection = capitalize('rOck');
-
-console.log(result);
-console.log(playerSelection);
 
 oneRound(computerSelection, playerSelection)
