@@ -24,6 +24,11 @@ function oneRound(computerSelection, playerSelection) {
     }
 }
 */
+
+// ---results div---
+const results = document.querySelector('#results');
+const standings = document.querySelector('#standings');
+// ---computer choice generator---
 function computerPlay(array) {
     const randomIndex = Math.floor(Math.random() * array.length);
     const item = array[randomIndex];
@@ -33,13 +38,27 @@ function computerPlay(array) {
 
 const choices = ['Rock', 'Paper', 'Scissors'];
 
-function capitalize(str){
-    const lower = str.toLowerCase(str);
-    return str.charAt(0).toUpperCase() + lower.slice(1);
-}
+// ---buttons---
+const rockBtn = document.querySelector('#rockBtn');
+rockBtn.addEventListener('click', function(e){
+    playerSelection = 'Rock';
+    game();
+})
 
-const playerSelection = capitalize(window.prompt('Write Rock, Paper or Scissors!'));
+const paperBtn = document.querySelector('#paperBtn');
+paperBtn.addEventListener('click', function(e){
+    playerSelection = 'Paper';
+    game();
+})
 
+const scissorsBtn = document.querySelector('#scissorsBtn');
+scissorsBtn.addEventListener('click', function(e){
+    playerSelection = 'Scissors';
+    game();
+})
+
+const buttons = document.querySelectorAll('button');
+// ---functions---
 var playerScore = 0;
 var computerScore = 0;
 var drawScore = 0;
@@ -51,47 +70,55 @@ function oneRound(computerSelection, playerSelection) {
 
         if (computerSelection === playerSelection) {
             drawScore++;
+            results.textContent = `Draw. You played ${computerSelection} and computer played ${playerSelection}`;
         }
         else if (computerSelection === paper && playerSelection === rock){ 
             computerScore++;
+            results.textContent = `You Lose! Computer played ${computerSelection} and you played ${playerSelection}`
         }
         else if (computerSelection === rock && playerSelection === scissors){
             computerScore++;
+            results.textContent = `You Lose! Computer played ${computerSelection} and you played ${playerSelection}`
         }
         else if (computerSelection === scissors && playerSelection === paper){
             computerScore++;
+            results.textContent = `You Lose! Computer played ${computerSelection} and you played ${playerSelection}`
         }
         else{
             playerScore++;
-    }
+            results.textContent = `You won! You played ${playerSelection} and computer played ${computerSelection}`
+        };
+    
+        standings.textContent = `Standings: YOU: ${playerScore}, COMP: ${computerScore}, DRAWS: ${drawScore}`;
 }
 
 function game(){
-    if (!(choices.includes(playerSelection))) {
-        alert(`Hey! That word is not allowed`);
-        location.reload();
-        }
-    else {
-        for (let i = 0; i < 5; i++){
-            
-            const computerSelection = computerPlay(choices);
-            oneRound(computerSelection, playerSelection);
-            console.log(playerSelection, computerSelection);
-            console.log(playerScore, computerScore, drawScore);
-        }
+    
+        const computerSelection = computerPlay(choices);
+        oneRound(computerSelection, playerSelection);
+        console.log(playerSelection, computerSelection);
+        console.log(playerScore, computerScore, drawScore);
+        
+        if(playerScore + computerScore + drawScore === 5){
+            results.textContent = '';
+            buttons.forEach((button) => {
+                button.addEventListener('click', () => {
+                  location.reload();
+                });
+              });
 
-        if (playerScore === computerScore) {
-            return `It's a draw. Computer got ${computerScore} points, you got ${playerScore} points and you played ${drawScore} equal games.`
-        }
-        else if (playerScore < computerScore) {
-            return `You lost! Computer got ${computerScore} points, you got ${playerScore} points and you played ${drawScore} equal games.`
-        }
-        else{
-            return `You won! Computer got ${computerScore} points, you got ${playerScore} points and you played ${drawScore} equal games.`
+            if (playerScore === computerScore) {
+                standings.textContent = `It's a draw. Computer got ${computerScore} points, you got ${playerScore} points and you played ${drawScore} equal games.`;
+            }
+            else if (playerScore < computerScore) {
+                standings.textContent = `You lost! Computer got ${computerScore} points, you got ${playerScore} points and you played ${drawScore} equal games.`
+            }
+            else{
+                standings.textContent = `You won! Computer got ${computerScore} points, you got ${playerScore} points and you played ${drawScore} equal games.`
+            }
         }
 
         
-}}
+}
 
-console.log(playerSelection)
-console.log(game())
+//console.log(game())
