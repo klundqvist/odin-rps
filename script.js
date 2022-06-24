@@ -108,13 +108,13 @@ function game(){
               });
 
             if (playerScore === computerScore) {
-                standings.textContent = `It's a draw. Computer got ${computerScore} points, you got ${playerScore} points and you played ${drawScore} equal games.`;
+                standings.textContent = `It's a draw. Computer got ${computerScore} points, you got ${playerScore} points and you played ${drawScore} equal games. Click any button to reload the page!`;
             }
             else if (playerScore < computerScore) {
-                standings.textContent = `You lost! Computer got ${computerScore} points, you got ${playerScore} points and you played ${drawScore} equal games.`
+                standings.textContent = `You lost! Computer got ${computerScore} points, you got ${playerScore} points and you played ${drawScore} equal games. Click any button to reload the page!`
             }
             else{
-                standings.textContent = `You won! Computer got ${computerScore} points, you got ${playerScore} points and you played ${drawScore} equal games.`
+                standings.textContent = `You won! Computer got ${computerScore} points, you got ${playerScore} points and you played ${drawScore} equal games. Click any button to reload the page!`
             }
         }
 
